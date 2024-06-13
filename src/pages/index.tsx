@@ -16,23 +16,14 @@ import me from '../images/me.jpeg';
 import location from '../images/location.png';
 import Blog from '../components/projects';
 import { ContactForm } from '../components/contact-form';
-import { motion } from "framer-motion";
+import Transition from './transition';
 
 export default function Home() {
 	return (
 		<div>
 			<Navbar />
 			<div className="pt-16 space-y-2">
-				<motion.div
-					initial={{ y: 300, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					exit={{ y: 300, opacity: 0 }}
-					transition={{
-						type: "spring",
-						stiffness: 100,
-						damping: 20,
-					}}
-				>
+				<Transition>
 					<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pt-4 md:pt-16">
 						<div className="col-span-6 md:col-span-4 flex h-52 flex-col justify-between overflow-hidden rounded-2xl px-8 py-8 custom-card">
 							<div className="flex gap-4">
@@ -40,7 +31,7 @@ export default function Home() {
 									className="flex items-center justify-center space-x-1.5 rounded-lg px-2 py-0.5 custom-card"
 									href="/projects"
 								>
-									<span>projects</span>
+									<span>/projects</span>
 									<span>
 										<FiArrowUpRight />
 									</span>
@@ -49,7 +40,7 @@ export default function Home() {
 									className="flex items-center justify-center space-x-1.5 rounded-lg px-2 py-0.5 custom-card"
 									href="/blog"
 								>
-									<span>blog</span>
+									<span>/blog</span>
 									<span>
 										<FiArrowUpRight />
 									</span>
@@ -293,13 +284,11 @@ export default function Home() {
 					</main>
 
 					<footer className="mx-auto flex max-w-3xl items-center justify-center px-6 py-6 text-sm text-neutral-600 dark:text-gray-400 [&_a:hover]:underline [&_a]:p-4 [&_a]:transition-colors">
-						<Link href="/projects">/projects</Link>
-						<Link href="/blog">/blog</Link>
 						<Link href="/contacts">/contacts</Link>
 						<Link href="/stats">/stats</Link>
 						<Link href="https://github.com/muhammad-zulfikar/muhammad-zulfikar.github.io">/source</Link>
 					</footer>
-				</motion.div>
+				</Transition>
 			</div>
 		</div >
 	);

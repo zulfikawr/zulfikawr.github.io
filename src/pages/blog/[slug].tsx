@@ -5,6 +5,7 @@ import { posts } from '../../components/blog';
 import Navbar from '../../components/blog/components/navbar';
 import TableOfContents from '../../components/blog/components/toc';
 import Footer from '../../components/blog/components/footer';
+import Transition from '../transition';
 
 type Props = {
 	readonly slug: string;
@@ -24,39 +25,41 @@ export default function PostPage({ slug }: Props) {
 	return (
 		<div className="space-y-4 px-4">
 			<Navbar />
-			<Head>
-				<title>{post.name}</title>
-				<meta name="description" content={post.excerpt} />
-				<meta name="keywords" content={post.keywords.join(', ')} />
-				<meta name="theme-color" content={post.hidden ? '#ebb305' : '#171717'} />
-			</Head>
+			<Transition>
+				<Head>
+					<title>{post.name}</title>
+					<meta name="description" content={post.excerpt} />
+					<meta name="keywords" content={post.keywords.join(', ')} />
+					<meta name="theme-color" content={post.hidden ? '#ebb305' : '#171717'} />
+				</Head>
 
-			{post.hidden && (
-				<div className="bg-yellow-500 text-yellow-900 rounded-md py-2 px-4">
-					<p>Hey! This post is hidden! Please don't share the link for now...</p>
-				</div>
-			)}
-
-			<div className="flex justify-end pt-16 md:pt-24 px-4 md:px-20">
-				<p>
-					<time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
-				</p>
-			</div>
-
-			<div className={`flex ${tocVisible ? 'justify-between px-4 md:px-20' : 'justify-center px-2 md:px-20'} gap-8`}>
-				<div className={`md:flex ${tocVisible ? 'justify-start md:p-4' : 'justify-center'} w-full md:custom-card rounded-xl`}>
-					<main className={`prose prose-hr:border-neutral-200 dark:prose-hr:border-neutral-800 prose-blue prose-img:rounded-md prose-img:w-full dark:prose-invert ${tocVisible ? 'md:max-w-4xl' : 'md:w-full'}`}>
-						{post.render()}
-					</main>
-				</div>
-				{tocVisible && (
-					<aside className="hidden md:block md:w-1/4 lg:w-1/3">
-						<TableOfContents content={post.render()} />
-					</aside>
+				{post.hidden && (
+					<div className="bg-yellow-500 text-yellow-900 rounded-md py-2 px-4">
+						<p>Hey! This post is hidden! Please don't share the link for now...</p>
+					</div>
 				)}
-			</div>
 
-			<Footer />
+				<div className="flex justify-end pt-16 md:pt-24 px-4 md:px-20">
+					<p>
+						<time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
+					</p>
+				</div>
+
+				<div className={`flex ${tocVisible ? 'justify-between px-4 md:px-20' : 'justify-center px-2 md:px-20'} gap-8`}>
+					<div className={`md:flex ${tocVisible ? 'justify-start md:p-4' : 'justify-center'} w-full md:custom-card rounded-xl`}>
+						<main className={`prose prose-hr:border-neutral-200 dark:prose-hr:border-neutral-800 prose-blue prose-img:rounded-md prose-img:w-full dark:prose-invert ${tocVisible ? 'md:max-w-4xl' : 'md:w-full'}`}>
+							{post.render()}
+						</main>
+					</div>
+					{tocVisible && (
+						<aside className="hidden md:block md:w-1/4 lg:w-1/3">
+							<TableOfContents content={post.render()} />
+						</aside>
+					)}
+				</div>
+
+				<Footer />
+			</Transition>
 		</div>
 	);
 }

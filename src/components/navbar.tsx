@@ -1,15 +1,25 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type RefObject } from 'react';
 import { FiMenu, FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
 
-function useClickOutside(ref: React.RefObject<HTMLDivElement>, buttonRef: React.RefObject<HTMLButtonElement>, onClickOutside: () => void) {
+function useClickOutside(
+    ref: RefObject<HTMLDivElement>, 
+    buttonRef: RefObject<HTMLButtonElement>, 
+    onClickOutside: () => void
+) {
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
-            if (ref.current && !ref.current.contains(event.target as Node) && buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
+            if (
+                ref.current && 
+                !ref.current.contains(event.target as Node) && 
+                buttonRef.current && 
+                !buttonRef.current.contains(event.target as Node)
+            ) {
                 onClickOutside();
             }
         }
+
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
@@ -20,12 +30,19 @@ function useClickOutside(ref: React.RefObject<HTMLDivElement>, buttonRef: React.
 export default function Navbar() {
     const { theme, setTheme } = useTheme();
     const [isNavOpen, setIsNavOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const navRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const router = useRouter();
 
     const toggleNav = () => {
-        setIsNavOpen(!isNavOpen);
+        if (isNavOpen) {
+            setIsVisible(false);
+            setTimeout(() => setIsNavOpen(false), 300); // Wait for the closing animation to complete
+        } else {
+            setIsNavOpen(true);
+            setTimeout(() => setIsVisible(true), 0); // Ensure visibility after the element is rendered
+        }
     };
 
     const toggleTheme = () => {
@@ -34,10 +51,16 @@ export default function Navbar() {
 
     const handleRedirect = (path: string) => {
         router.push(path);
-        setIsNavOpen(false);
+        setIsVisible(false);
+        setTimeout(() => setIsNavOpen(false), 300); // Wait for the closing animation to complete
     };
 
-    useClickOutside(navRef, buttonRef, () => setIsNavOpen(false));
+    useClickOutside(navRef, buttonRef, () => {
+        if (isNavOpen) {
+            setIsVisible(false);
+            setTimeout(() => setIsNavOpen(false), 300); // Wait for the closing animation to complete
+        }
+    });
 
     return (
         <div className="fixed top-0 left-0 right-0 z-50">
@@ -57,8 +80,14 @@ export default function Navbar() {
                 </button>
             </div>
             {isNavOpen && (
-                <div ref={navRef} className="absolute left-4 md:left-10 w-48 rounded-md">
-                    <div className='text-black dark:text-white rounded-xl focus:outline-none custom-card'>
+                <div
+                ref={navRef}
+                className={`absolute left-6 md:left-8 w-48 rounded-md transition-all duration-300 ease-in-out transform ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-14'
+                }`}
+            >
+            
+                    <div className="text-black dark:text-white rounded-xl focus:outline-none custom-card">
                         <ul>
                             <li className="py-2 px-4 hover:underline cursor-pointer rounded-xl" onClick={() => handleRedirect('/')}>
                                 /
@@ -74,6 +103,9 @@ export default function Navbar() {
                             </li>
                             <li className="py-2 px-4 hover:underline cursor-pointer rounded-xl" onClick={() => handleRedirect('/stats')}>
                                 /stats
+                            </li>
+                            <li className="py-2 px-4 hover:underline cursor-pointer rounded-xl" onClick={() => handleRedirect('https://github.com/muhammad-zulfikar/muhammad-zulfikar.github.io')}>
+                                /source
                             </li>
                         </ul>
                     </div>

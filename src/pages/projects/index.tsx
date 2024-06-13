@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FiArrowUpRight } from 'react-icons/fi';
 import Navbar from '../../components/navbar';
 import { CardHoverEffect, hoverClassName } from '../../components/hover-card';
+import Transition from '../../pages/transition'
 import vuenotes from './assets/vuenotes.png';
 import win95portfolio from './assets/win95portfolio.png';
 
@@ -52,9 +53,9 @@ export default function Home() {
     );
 
     return (
-        <div>
+        <div className="pt-16">
             <Navbar />
-            <div className="pt-16">
+            <Transition>
                 <main className="mx-auto grid max-w-3xl grid-cols-1 md:grid-cols-2 px-6 pt-4 md:pt-16">
                     <div className="custom-card rounded-xl col-span-1 md:col-span-2 flex justify-between items-center p-4 relative mb-4">
                         <h2 className="col-span-2 flex relative">
@@ -121,13 +122,13 @@ export default function Home() {
                         </div>
                     ))}
                 </main>
-            </div>
 
-            <footer className="mx-auto flex max-w-3xl items-center justify-center px-6 pb-12 text-sm text-neutral-600 dark:text-gray-400 [&_a:hover]:underline [&_a]:p-4 [&_a]:transition-colors">
-                <Link href="/">/</Link>
-                <Link href="/stats">/stats</Link>
-                <Link href="https://github.com/muhammad-zulfikar/muhammad-zulfikar.github.io">/source</Link>
-            </footer>
+                <footer className="mx-auto flex max-w-3xl items-center justify-center px-6 pb-12 text-sm text-neutral-600 dark:text-gray-400 [&_a:hover]:underline [&_a]:p-4 [&_a]:transition-colors">
+                    <Link href="/">/</Link>
+                    <Link href="/stats">/stats</Link>
+                    <Link href="https://github.com/muhammad-zulfikar/muhammad-zulfikar.github.io">/source</Link>
+                </footer>
+            </Transition>
         </div>
     );
 }

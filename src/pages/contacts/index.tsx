@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Navbar from '../../components/navbar';
+import Transition from '../transition';
 import { SiLinkedin, SiGithub, SiWhatsapp, SiGmail, SiInstagram, SiTwitter, SiTelegram } from 'react-icons/si';
 
 const contacts = [
@@ -44,35 +45,37 @@ export default function ContactPage() {
     return (
         <div className="md:min-h-screen flex flex-col">
             <Navbar />
-            <main className="flex-grow flex items-center justify-center px-2 md:px-0 pt-24 md:pt-0">
-                <div className="custom-card p-4 rounded-xl mx-4 md:mx-0 max-w-md w-full">
-                    <h2>
-                        <Link href="/" className="text-glow-black dark:text-glow-white hover:underline">
-                            zulfikar
-                        </Link>
-                        {'/'}
-                        <Link href="/contacts" className="text-glow-black dark:text-glow-white hover:underline">
-                            contacts
-                        </Link>
-                    </h2>
-                    <ul className="space-y-1 list-disc list-inside mt-4">
-                        {contacts.map((contact, index) => (
-                            <li key={index} className="flex items-center">
-                                <contact.icon className="mr-2" />
-                                <Link href={contact.href} className="text-black dark:text-white hover:underline" target='_blank'>
-                                    {contact.title}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </main>
-            <footer className="flex justify-center items-center w-full mt-4 text-sm text-neutral-600 dark:text-gray-400 [&_a:hover]:underline [&_a]:p-4 [&_a]:transition-colors">
-                <Link href="/">/</Link>
-                <Link href="/projects">/projects</Link>
-                <Link href="/blog">/blog</Link>
-                <Link href="/stats">/stats</Link>
-            </footer>
+            <Transition>
+                <main className="flex-grow flex items-center justify-center px-2 md:px-0 pt-24">
+                    <div className="custom-card p-4 rounded-xl mx-4 md:mx-0 max-w-md w-full">
+                        <h2>
+                            <Link href="/" className="text-glow-black dark:text-glow-white hover:underline">
+                                zulfikar
+                            </Link>
+                            {'/'}
+                            <Link href="/contacts" className="text-glow-black dark:text-glow-white hover:underline">
+                                contacts
+                            </Link>
+                        </h2>
+                        <ul className="space-y-1 list-disc list-inside mt-4">
+                            {contacts.map((contact, index) => (
+                                <li key={index} className="flex items-center">
+                                    <contact.icon className="mr-2" />
+                                    <Link href={contact.href} className="text-black dark:text-white hover:underline" target='_blank'>
+                                        {contact.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </main>
+                <footer className="flex justify-center items-center w-full mt-4 text-sm text-neutral-600 dark:text-gray-400 [&_a:hover]:underline [&_a]:p-4 [&_a]:transition-colors">
+                    <Link href="/">/</Link>
+                    <Link href="/projects">/projects</Link>
+                    <Link href="/blog">/blog</Link>
+                    <Link href="/stats">/stats</Link>
+                </footer>
+            </Transition>
         </div>
     );
 }
