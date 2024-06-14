@@ -4,6 +4,7 @@ import { Quantium } from '../../pages/blog/posts/2024/quantium/quantium';
 import { SearchingGitHubForOpenAIApiKeys } from '../../pages/blog/posts/2024/searching-github-openai-api-keys/searching-github-openai-api-keys';
 import { PS1PromptColor } from '../../pages/blog/posts/2024/changing-ps1-prompt-based-on-previous-command-return/changing-ps1-prompt-based-on-previous-command-return';
 import { WeirdWorld } from '../../pages/blog/posts/2024/weird-world/weird-world';
+import { DeployingNextJsToGitHubPages } from '../../pages/blog/posts/2024/deploy-nextjs-to-github-pages/deploy-nextjs-to-github-pages';
 
 export const posts = [
 	new WhichFruitsMayYouReap(),
@@ -12,6 +13,7 @@ export const posts = [
 	new SearchingGitHubForOpenAIApiKeys(),
 	new PS1PromptColor(),
 	new WeirdWorld(),
+	new DeployingNextJsToGitHubPages(),
 ] as const;
 
 export function sortPosts(p: typeof posts) {

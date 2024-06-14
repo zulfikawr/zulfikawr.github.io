@@ -4,16 +4,16 @@ import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
 
 function useClickOutside(
-    ref: RefObject<HTMLDivElement>, 
-    buttonRef: RefObject<HTMLButtonElement>, 
+    ref: RefObject<HTMLDivElement>,
+    buttonRef: RefObject<HTMLButtonElement>,
     onClickOutside: () => void
 ) {
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (
-                ref.current && 
-                !ref.current.contains(event.target as Node) && 
-                buttonRef.current && 
+                ref.current &&
+                !ref.current.contains(event.target as Node) &&
+                buttonRef.current &&
                 !buttonRef.current.contains(event.target as Node)
             ) {
                 onClickOutside();
@@ -31,6 +31,8 @@ export default function Navbar() {
     const { theme, setTheme } = useTheme();
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [showNavbar, setShowNavbar] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
     const navRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const router = useRouter();
@@ -62,8 +64,30 @@ export default function Navbar() {
         }
     });
 
+    const controlNavbar = () => {
+        if (typeof window !== 'undefined') {
+            if (window.scrollY > lastScrollY) { // if scroll down
+                setShowNavbar(false);
+            } else { // if scroll up
+                setShowNavbar(true);
+            }
+            setLastScrollY(window.scrollY);
+        }
+    };
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', controlNavbar);
+
+            return () => {
+                window.removeEventListener('scroll', controlNavbar);
+            };
+        }
+        return undefined;
+    }, [lastScrollY]);
+
     return (
-        <div className="fixed top-0 left-0 right-0 z-50">
+        <div className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${showNavbar ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
             <div className="flex justify-between items-center p-4 bg-transparent">
                 <button
                     ref={buttonRef}
@@ -81,12 +105,10 @@ export default function Navbar() {
             </div>
             {isNavOpen && (
                 <div
-                ref={navRef}
-                className={`absolute left-6 md:left-8 w-48 rounded-md transition-all duration-300 ease-in-out transform ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-14'
-                }`}
-            >
-            
+                    ref={navRef}
+                    className={`absolute left-6 md:left-8 w-48 rounded-md transition-all duration-300 ease-in-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-14'
+                        }`}
+                >
                     <div className="text-black dark:text-white rounded-xl focus:outline-none custom-card">
                         <ul>
                             <li className="py-2 px-4 hover:underline cursor-pointer rounded-xl" onClick={() => handleRedirect('/')}>

@@ -38,7 +38,7 @@ const TableOfContents = ({ content }: TOCProps) => {
           }
         });
       },
-      { rootMargin: '0% 0% -72% 0%' }
+      { rootMargin: '0% 0% -55% 0%' }
     );
 
     const elements = document.querySelectorAll('h2, h3, h4, h5, h6');
