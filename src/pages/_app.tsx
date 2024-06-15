@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
-import { Newsreader } from 'next/font/google';
 import font from 'next/font/local';
 import Head from 'next/head';
 import { useEffect } from 'react';
