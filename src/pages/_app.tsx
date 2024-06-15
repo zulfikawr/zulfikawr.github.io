@@ -10,13 +10,6 @@ import '../styles/globals.css';
 import '../styles/blog.css';
 import '../styles/toc.css';
 
-const title = Newsreader({
-	subsets: ['latin'],
-	weight: ['400', '200'],
-	style: 'italic',
-	fallback: ['serif'],
-});
-
 const body = font({
 	src: '../fonts/roobert-variable.woff2',
 });
@@ -35,7 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
 			<style jsx global>
 				{`
 					:root {
-						--font-title: ${title.style.fontFamily};
 						--font-body: ${body.style.fontFamily};
 					}
 				`}

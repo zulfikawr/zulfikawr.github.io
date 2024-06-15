@@ -9,7 +9,6 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			sans: ['var(--font-body)', ...defaultTheme.fontFamily.sans],
-			title: ['var(--font-title)', ...defaultTheme.fontFamily.serif],
 			mono: ['"DM Mono"', 'monospace'],
 		},
 		fontWeight: {

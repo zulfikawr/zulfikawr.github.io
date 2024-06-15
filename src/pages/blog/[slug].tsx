@@ -54,7 +54,7 @@ export default function PostPage({ slug }: Props) {
 					{tocExists && (
 						<button 
 							onClick={toggleToc} 
-							className="px-4 py-2 text-white rounded-lg custom-card hidden md:inline-flex">
+							className="px-4 py-2 rounded-lg custom-card hidden md:inline-flex">
 							<BiBookContent className="w-5 h-auto" />
 						</button>
 					)}
