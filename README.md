@@ -2,7 +2,7 @@
 
 ![Screenshot](screenshot.png)
 
-My personal website homepage written in Next.js using TypeScript. [Live Preview](https://muhammad-zulfikar.github.io)
+My personal website homepage written in Next.js using TypeScript. [Live Preview](https://zulfikawr.github.io)
 
 ## Thanks
 

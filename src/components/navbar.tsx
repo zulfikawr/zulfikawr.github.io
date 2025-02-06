@@ -77,7 +77,7 @@ export default function Navbar() {
         setLastScrollY(window.scrollY);
       }
     };
-    
+
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', controlNavbar);
 
@@ -156,7 +156,7 @@ export default function Navbar() {
                 className="py-2 px-4 hover:underline cursor-pointer rounded-xl"
                 onClick={() =>
                   handleRedirect(
-                    'https://github.com/muhammad-zulfikar/muhammad-zulfikar.github.io'
+                    'https://github.com/zulfikawr/zulfikawr.github.io'
                   )
                 }
               >

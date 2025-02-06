@@ -6,7 +6,7 @@ export default function Footer() {
       <Link href="/">/</Link>
       <Link href="/stats">/stats</Link>
       <Link
-        href="https://github.com/muhammad-zulfikar/muhammad-zulfikar.github.io"
+        href="https://github.com/zulfikawr/zulfikawr.github.io"
         target="_blank"
         rel="noopener noreferrer"
       >

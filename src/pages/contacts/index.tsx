@@ -18,7 +18,7 @@ const contacts = [
     icon: SiLinkedin,
   },
   {
-    href: 'https://github.com/muhammad-zulfikar',
+    href: 'https://github.com/zulfikawr',
     title: 'GitHub',
     icon: SiGithub,
   },

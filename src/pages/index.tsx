@@ -78,7 +78,7 @@ export default function Home() {
 
           <CardHoverEffect className="col-span-3 h-full md:col-span-3">
             <Link
-              href="https://github.com/muhammad-zulfikar"
+              href="https://github.com/zulfikawr"
               target="_blank"
               rel="noopener noreferrer"
               className={clsx(
