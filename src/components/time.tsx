@@ -29,7 +29,7 @@ function Night({ time }: { time: Date }) {
         Math.random() * canvas.height,
         Math.random() * 2,
         0,
-        Math.PI * 2,
+        Math.PI * 2
       );
       ctx.fill();
     }
@@ -39,7 +39,7 @@ function Night({ time }: { time: Date }) {
     <div
       className={clsx(
         'relative flex items-center justify-center overflow-hidden rounded-2xl border-2 border-black dark:border-white shadow-xl hover:shadow-2xl transition-all duration-500 will-change-[outline,_transform]',
-        'custom-card text-black dark:text-white',
+        'custom-card text-black dark:text-white'
       )}
     >
       <canvas
@@ -49,16 +49,11 @@ function Night({ time }: { time: Date }) {
       />
 
       <div className="z-10 text-center">
-        <h2
-          className={clsx('text-2xl font-light')}
-          suppressHydrationWarning
-        >
+        <h2 className={clsx('text-2xl font-light')} suppressHydrationWarning>
           {JakartaTimeFormatter.format(time)}
         </h2>
 
-        <p className={clsx('text-xs font-light')}>
-          in Jakarta
-        </p>
+        <p className={clsx('text-xs font-light')}>in Jakarta</p>
       </div>
     </div>
   );
@@ -70,12 +65,17 @@ function Day({ time }: { time: Date }) {
       <div className="flex w-full items-center justify-center">
         <div className="opacity-85 flex items-baseline space-x-1 md:space-x-2">
           <div className="flex flex-col">
-            <h2 className="text-2xl font-light text-white" suppressHydrationWarning>{JakartaTimeFormatter.format(time)}</h2>
+            <h2
+              className="text-2xl font-light text-white"
+              suppressHydrationWarning
+            >
+              {JakartaTimeFormatter.format(time)}
+            </h2>
 
             <p
               className={clsx(
                 'text-center text-xs font-light',
-                'text-white text-glow-sky-900 dark:text-glow-sky-500',
+                'text-white text-glow-sky-900 dark:text-glow-sky-500'
               )}
             >
               in Jakarta

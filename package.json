@@ -1,7 +1,7 @@
 {
   "name": "zulfikar/",
   "version": "1.0.0",
-  "repository": "git@github.com:muhammad-zulfikar/muhammad-zulfikar.github.io.git",
+  "repository": "git@github.com:zulfikawr/zulfikawr.github.io.git",
   "license": "Apache-2.0",
   "private": true,
   "packageManager": "bun@1.0.0",
@@ -34,7 +34,6 @@
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
     "@tailwindcss/typography": "^0.5.13",
-    "alistair": "^1.5.6",
     "clsx": "^2.1.0",
     "common-tags": "^1.8.2",
     "dotenv": "^16.3.1",

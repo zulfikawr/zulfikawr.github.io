@@ -7,25 +7,25 @@ import { WeirdWorld } from '../../pages/blog/posts/2024/weird-world/weird-world'
 import { DeployingNextJsToGitHubPages } from '../../pages/blog/posts/2024/deploy-nextjs-to-github-pages/deploy-nextjs-to-github-pages';
 
 export const posts = [
-	new WhichFruitsMayYouReap(),
-	new WTFESM(),
-	new Quantium(),
-	new SearchingGitHubForOpenAIApiKeys(),
-	new PS1PromptColor(),
-	new WeirdWorld(),
-	new DeployingNextJsToGitHubPages(),
+  new WhichFruitsMayYouReap(),
+  new WTFESM(),
+  new Quantium(),
+  new SearchingGitHubForOpenAIApiKeys(),
+  new PS1PromptColor(),
+  new WeirdWorld(),
+  new DeployingNextJsToGitHubPages(),
 ] as const;
 
 export function sortPosts(p: typeof posts) {
-	return [...p].sort((a, b) => {
-		if (a.date > b.date) {
-			return -1;
-		}
+  return [...p].sort((a, b) => {
+    if (a.date > b.date) {
+      return -1;
+    }
 
-		if (a.date < b.date) {
-			return 1;
-		}
+    if (a.date < b.date) {
+      return 1;
+    }
 
-		return 0;
-	});
+    return 0;
+  });
 }

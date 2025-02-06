@@ -1,1 +1,2 @@
-export type PropsFor<Key extends keyof JSX.IntrinsicElements> = JSX.IntrinsicElements[Key];
+export type PropsFor<Key extends keyof JSX.IntrinsicElements> =
+  JSX.IntrinsicElements[Key];

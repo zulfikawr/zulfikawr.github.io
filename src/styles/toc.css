@@ -1,42 +1,42 @@
 .toc-container {
-    position: sticky;
-    top: 5rem;
-    max-height: calc(100vh - 2rem);
-    overflow-y: auto;
-    padding: 12px;
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding: 12px;
 }
 
 .toc ul {
-    list-style: inside;
+  list-style: inside;
 }
 
 .toc li {
-    margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .toc a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .toc a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .toc-title {
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .toc-level-2 {
-    margin-left: .25rem;
+  margin-left: 0.25rem;
 }
 
 .toc-level-3 {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 @media (max-width: 768px) {
-    .toc {
-        display: none;
-    }
+  .toc {
+    display: none;
+  }
 }

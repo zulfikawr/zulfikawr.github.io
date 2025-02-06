@@ -23,12 +23,14 @@ body {
   opacity: 1;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 0.75rem;
   margin-bottom: 0.5rem;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   box-shadow: none;
 }
@@ -43,7 +45,9 @@ input:focus, textarea:focus {
   border: 1px solid black;
   border-radius: 6px;
   outline: rgb(219, 219, 219);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 .dark ::-webkit-scrollbar-thumb {

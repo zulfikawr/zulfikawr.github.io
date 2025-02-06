@@ -6,7 +6,9 @@ interface TOCProps {
 
 const TableOfContents = ({ content }: TOCProps) => {
   const [title, setTitle] = useState<string>('');
-  const [headings, setHeadings] = useState<Array<{ id: string; text: string; level: number }>>([]);
+  const [headings, setHeadings] = useState<
+    Array<{ id: string; text: string; level: number }>
+  >([]);
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
@@ -16,7 +18,12 @@ const TableOfContents = ({ content }: TOCProps) => {
     elements.forEach((element) => {
       const level = parseInt(element.tagName[1]!);
       const text = element.textContent || '';
-      const id = element.id || text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      const id =
+        element.id ||
+        text
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
       element.id = id;
       tocHeadings.push({ id, text, level });
     });
@@ -60,7 +67,7 @@ const TableOfContents = ({ content }: TOCProps) => {
   return (
     <>
       <div className="toc-container custom-card p-2 rounded-xl text-xs">
-        <h1 className='toc-title'>{title}</h1>
+        <h1 className="toc-title">{title}</h1>
         <nav className="toc">
           <ul>
             {headings.map((heading) => (
